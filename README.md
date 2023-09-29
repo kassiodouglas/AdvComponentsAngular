@@ -29,3 +29,23 @@ Para publicar
 ```
 npm run pub
 ```
+
+
+## Backend (temporario)
+Copie a classe Tableadv no arquivo do repositorio (@backend - class Tableadv - laravel - 1.0.0.zip), somente cole na raiz da pasta 'app' dentro do Laravel.
+Faça a chamada da classe normamente e de um return nela. A rota precisa ser do tipo POST.
+
+```
+    ## route/api.php
+    Route::post('/', [UsersController::class, 'all']);
+
+
+
+    ## UsersController.php
+    use App\Kassdoug\Tableadv\TableadvController;
+
+    public function all(Request $request){     
+        $query = User::with(["address"]);
+        return TableadvController::run(User::class, $query, $request);        
+    }
+```
