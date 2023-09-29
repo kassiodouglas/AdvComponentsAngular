@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { TableAdvModule } from '@kassdoug/tableadv';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { SpotsService } from './services/spots.service';
+import { Service } from './services/service.service';
 import { HttpClientModule } from '@angular/common/http'
 import { CommonModule } from '@angular/common';
 
@@ -19,7 +19,7 @@ import { CommonModule } from '@angular/common';
     HttpClientModule, 
     CommonModule
   ],
-  providers: [SpotsService],
+  providers: [Service],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

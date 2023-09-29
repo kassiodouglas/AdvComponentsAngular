@@ -275,3 +275,34 @@ Onde:
 - *data*: são os dados da api em array;
 - *gridHeader*: dados da configuração das colunas;
 * *onGetData*: evento que irá chamar o método getDataUsers(), que deve receber $event;
+
+
+<br><br>
+
+Em `app-module.ts`:
+
+Faça o import dos modulos:
+```
+import { TableAdvModule } from '@kassdoug/tableadv';
+import { NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { AppComponent } from './app.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+
+@NgModule({
+  declarations: [
+    AppComponent
+  ],
+  imports: [
+    TableAdvModule,
+    BrowserModule,  
+    FormsModule, 
+    ReactiveFormsModule,     
+    CommonModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+```
