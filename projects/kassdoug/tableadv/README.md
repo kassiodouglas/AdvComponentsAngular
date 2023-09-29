@@ -259,3 +259,19 @@ item['option'] = {
 .
 .
 ```
+
+
+<br><br>
+
+
+Em `users-component.html`:
+No html simplesmente chame o seletor 'tableadv' e informe os atributos que configuramos:
+
+```
+    <tableadv [id]="tableadvIdUser" [data]="tableadvUsers" [gridHeader]="tableadvUsersHeader" (onGetData)="getDataUsers($event)"></tableadv>
+```
+Onde:
+- *id*: o id único da tabela;
+- *data*: são os dados da api em array;
+- *gridHeader*: dados da configuração das colunas;
+* *onGetData*: evento que irá chamar o método getDataUsers(), que deve receber $event;

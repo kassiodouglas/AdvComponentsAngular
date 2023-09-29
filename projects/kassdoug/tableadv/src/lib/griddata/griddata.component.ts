@@ -2,7 +2,7 @@ import { Component, OnInit, Input, SimpleChanges, OnChanges, Output, EventEmitte
 import * as Notiflix from 'notiflix';
 
 @Component({
-  selector: 'GridData',
+  selector: 'tableadv',
   templateUrl: './griddata.component.html',
   styleUrls: ['./griddata.component.scss'],
   encapsulation: ViewEncapsulation.Emulated
