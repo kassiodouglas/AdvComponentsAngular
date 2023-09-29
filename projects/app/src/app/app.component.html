@@ -1,0 +1,28 @@
+<div style="
+  width: 100vw;
+  height: 100%;
+  display: flex;
+  justify-content: start;
+  align-items: center; 
+  padding-top: 15px;
+  padding-bottom: 50px;
+  box-sizing: border-box;
+  flex-direction: column;
+  overflow-x: hidden;
+">
+
+  <div>
+    <h1 style="padding: 10px 0;">Component Spots</h1>
+
+    <GridData id='tableSpots' [data]="gridDataSpots" [gridHeader]="gridHeaderSpots" (onGetData)="getData($event)"></GridData>
+
+  </div>
+
+  <div>
+    <h1 style="padding: 10px 0;">Component Users</h1>
+
+    <GridData id='tableUsers' [data]="gridDataUsers" [gridHeader]="gridHeaderUsers" (onGetData)="getDataUsers($event)"></GridData>
+
+  </div>
+
+</div>
