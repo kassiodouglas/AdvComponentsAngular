@@ -1,5 +1,7 @@
-import { Component, OnInit, Input, SimpleChanges, OnChanges, Output, EventEmitter, ViewChildren, QueryList, ElementRef, ViewEncapsulation, AfterViewInit } from '@angular/core';
+import { Component, OnInit, Input, SimpleChanges, OnChanges, Output, EventEmitter, Renderer2, ViewChildren, QueryList, ElementRef, ViewEncapsulation, AfterViewInit } from '@angular/core';
 import * as Notiflix from 'notiflix';
+
+
 
 @Component({
   selector: 'tableadv',
@@ -15,6 +17,8 @@ export class GriddataComponent implements OnInit, OnChanges, AfterViewInit {
 
 
   driver: string = 'laravel-eloquent' // chave simbolica para determinar o uso do componente com backend em laravel com eloquent
+  version:string = '1.0.4'
+  message:string = ''
 
   /** Define o estado da tabela maximizado ou normal */
   screenMaximize: boolean = false
@@ -65,13 +69,16 @@ export class GriddataComponent implements OnInit, OnChanges, AfterViewInit {
 
   /** Constructor -------------------------------------------------------------------- */
 
-  constructor() {
+  constructor(
+    private renderer: Renderer2
+  ) {
   }
 
 
   /** Cycles -------------------------------------------------------------------- */
 
   ngOnInit() {
+
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -79,12 +86,14 @@ export class GriddataComponent implements OnInit, OnChanges, AfterViewInit {
     this.data = changes['data'].currentValue
     if (this.data !== null)
       this.config()
+ 
 
-    this.CONSOLE()
+    // this.CONSOLE()
 
   }
 
   ngAfterViewInit(): void {
+
     this.emitGetData()    
   }
 
@@ -122,7 +131,7 @@ export class GriddataComponent implements OnInit, OnChanges, AfterViewInit {
 
   /** Adiciona um loader */
   loading() {
-    console.log('loafin')
+    this.message = ''
     Notiflix.Block.init({
       svgColor: '#4551cc',
       backgroundColor: "rgba(255, 255, 255, .7)"
@@ -135,6 +144,13 @@ export class GriddataComponent implements OnInit, OnChanges, AfterViewInit {
   removeLoading() {
     setTimeout(() => {
       Notiflix.Block.remove(`#gd-container-${this.id}`)
+
+      if(this.data == null){
+        this.data = null
+        this.totalRegisters = 0
+        this.totalRegisterInPage = 0
+        this.message = 'Nenhuma informação carregada'
+      }
     }, 2000);
   }
 
@@ -146,6 +162,7 @@ export class GriddataComponent implements OnInit, OnChanges, AfterViewInit {
       this.data = null
       this.totalRegisters = 0
       this.totalRegisterInPage = 0
+      this.message = 'Nenhuma informação carregada'
     }else{
       this.totalRegisters = this.data.total
       this.totalRegisterInPage = this.data.length
@@ -176,6 +193,12 @@ export class GriddataComponent implements OnInit, OnChanges, AfterViewInit {
   /** Evento de maximizar a tela e voltar ao normal */
   maximizeToggle() {
     this.screenMaximize = !this.screenMaximize
+
+    if (this.screenMaximize) {
+      this.renderer.setStyle(document.body, 'overflow', 'hidden');
+    }else{
+      this.renderer.removeStyle(document.body, 'overflow');
+    }
   }
 
 

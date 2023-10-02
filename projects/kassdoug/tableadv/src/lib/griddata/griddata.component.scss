@@ -17,6 +17,10 @@
     filter: blur();
 }
 
+body ~ .gd-container.fullscreen{
+    overflow: hidden;
+}
+
 .gd-container {
     padding: 0 10px;
     background-color: #fff;

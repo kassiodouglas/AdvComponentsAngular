@@ -4,8 +4,9 @@ import { AppComponent } from './app.component';
 import { TableAdvModule } from '@kassdoug/tableadv';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { Service } from './services/service.service';
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule } from '@angular/common/http' 
 import { CommonModule } from '@angular/common';
+
 
 @NgModule({
   declarations: [

@@ -2,7 +2,7 @@
 
 <div id="gd-container-{{id}}" class='gd-container' [ngClass]="{'fullscreen':screenMaximize}">
 
-  <small class="gd-version"> v1.0.0 </small>
+  <small class="gd-version"> {{version}} </small>
 
   <!-- header -->
   <div class="gd-header">    
@@ -49,7 +49,7 @@
   <!-- body -->
   <div class="gd-body" appScrollListener (fixedHeader)="fixeHeader($event)">
     
-    <div *ngIf="data == null" class="not-reg">Não há registros carregados</div>    
+    <div *ngIf="data == null" class="not-reg">{{message}} </div>    
 
     <table  *ngIf="data != null">
       <tr class="gd-header-row" [ngClass]="{'fixed': isFixed}">
