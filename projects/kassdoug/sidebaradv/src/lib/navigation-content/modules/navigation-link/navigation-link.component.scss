@@ -1,0 +1,139 @@
+.adv-links {
+    list-style: none;
+    padding: 0 10px;
+
+    .adv-links-sub {
+        list-style: none;
+        // background-color: rgba(238, 238, 238, 0.3);
+        width: 100%;
+
+        &.adv-hide-submenu {
+            display: none;
+
+            .adv-btn-link {
+                margin-top: 0;
+            }
+        }
+
+        .adv-links {
+            padding: 0 0 0 15px;
+
+            .adv-btn-link {
+                border-left: 1px solid rgba(0, 0, 0, 0.2);
+            }
+        }
+
+
+    }
+
+    .adv-btn-expand,
+    .adv-btn-link {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        border: none;
+        width: 100%;
+        padding: 10px;
+        cursor: pointer;
+        opacity: .7;
+        transition: all ease-in-out .3s;
+        font-size: .8rem;
+        border-radius: 5px;
+        border-left: 2px solid rgba(255, 0, 0, 0);
+
+        &:hover {
+            opacity: 1;
+        }
+
+        &.active{
+            border-color: rgb(7, 105, 116);
+            border-radius: 0 5px 5px 0px;
+        }
+    }
+
+    .adv-btn-expand {
+
+        .icon{
+            margin-right: 5px;
+        }
+
+        &.active,
+        &:hover {
+            background-color: rgba(11, 11, 11, 0.1);
+        }
+    }
+
+    .adv-btn-link {
+        // margin: 5px 0;
+        // background-color: rgba(11, 11, 11, 0.246);
+        border-radius: 0px;
+
+
+        &:hover {
+            background-color: rgba(11, 11, 11, 0.1);
+        }
+
+    }
+
+
+    .divider {
+        font-size: .7rem;
+        opacity: .4;
+        padding: 5px;
+        margin: 10px 0 5px 0;
+        border-bottom: 1px solid #ddd;
+    }
+}
+
+
+
+
+
+//dark
+.adv-links.dark{
+    color:#fff;
+
+    .adv-btn-expand{
+        background-color: #ffffff00;
+        color: #fff;
+
+        &.active,
+        &:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+
+        }
+
+        &.active{
+            border-color: rgb(0, 229, 255);
+        }
+
+    }
+
+    .adv-btn-link{
+        background-color: #ffffff00;
+        color: #fff;
+
+        &.active,
+        &:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+
+    }
+
+    .adv-links-sub {
+        // background-color: rgba(206, 34, 34, 0.3);
+
+        .adv-links {
+            .adv-btn-link {
+                border-left: 1px solid rgba(255, 255, 255, 0.2);
+            }
+        }
+
+    }
+
+    .divider {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+    }
+
+}

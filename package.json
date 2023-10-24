@@ -1,6 +1,6 @@
 {
-  "name": "tableadv",
-  "version": "0.0.1",
+  "name": "kassdoug",
+  "version": "1.0.0",
   "author": {"name":"Kássio Douglas", "email": "kassdoug@gmail.com"},
   "scripts": {
     "ng": "ng",
@@ -8,9 +8,11 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "pub": "npm run build @kassdoug/tableadv && cd dist/kassdoug/tableadv && npm publish --access public",
+    "pub:table": "npm run build @kassdoug/tableadv && cd dist/kassdoug/tableadv && npm publish --access public",
+    "pub:sidebar": "npm run build @kassdoug/sidebaradv && cd dist/kassdoug/sidebaradv && npm publish --access public",
     "dev:app": "npm start App",
-    "dev:tableadv": "npm run watch @kassdoug/tableadv"    
+    "dev:table": "npm run watch @kassdoug/tableadv",    
+    "dev:sidebar": "npm run watch @kassdoug/sidebaradv"
   },
   "private": true,
   "dependencies": {

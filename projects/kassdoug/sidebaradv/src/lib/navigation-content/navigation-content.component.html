@@ -1,0 +1,44 @@
+<div class="sidebar-content {{theme}}" [ngClass]="{'sb-position-left':position=='left','sb-position-right':position=='right'}">
+  
+
+
+  <div class="sidebar" [ngClass]="{'withHover':withHover, 'hide': !showToggle, 'show':showToggle}" (onSidebarTooggle)="sidebarToggle()">   
+
+    <button *ngIf="!withHover && position=='left'" class="adv-btn-showhide" [ngClass]="{'hide':!showToggle}" (click)="sidebarToggle()">
+
+      <i *ngIf="position=='left'" class="fa-solid" [ngClass]="(showToggle) ? 'fa-circle-chevron-left':'fa-circle-chevron-right'"></i>
+      <!-- <i *ngIf="position=='right'"class="fa-solid" [ngClass]="(showToggle) ? 'fa-circle-chevron-right':'fa-circle-chevron-left'"></i> -->
+  
+    </button>
+
+
+    <div class="content-links">      
+      
+      <header *ngIf="header" [innerHtml]="header"></header>
+    
+      <div *ngFor="let link of links">   
+        <app-navigation-link [link]="link" [theme]="theme"></app-navigation-link>
+      </div>
+      
+    </div>
+
+
+
+    <button *ngIf="!withHover && position=='right'" class="adv-btn-showhide" [ngClass]="{'hide':!showToggle}" (click)="sidebarToggle()">
+
+      <!-- <i *ngIf="position=='left'" class="fa-solid" [ngClass]="(showToggle) ? 'fa-circle-chevron-left':'fa-circle-chevron-right'"></i> -->
+      <i *ngIf="position=='right'"class="fa-solid" [ngClass]="(showToggle) ? 'fa-circle-chevron-right':'fa-circle-chevron-left'"></i>
+  
+    </button>
+      
+      
+  </div>
+
+
+
+  <div class="content">     
+    <ng-content></ng-content> 
+    <router-outlet></router-outlet>  
+  </div>
+
+</div> 

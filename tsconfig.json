@@ -3,9 +3,12 @@
   "compileOnSave": false,
   "compilerOptions": {
     "paths": {
+      "@kassdoug/sidebaradv": [
+        "dist/kassdoug/sidebaradv"
+      ],
       "@kassdoug/tableadv": [
         "dist/kassdoug/tableadv"
-      ]
+      ]     
     },
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",

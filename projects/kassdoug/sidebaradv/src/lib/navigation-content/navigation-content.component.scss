@@ -1,0 +1,328 @@
+.sidebar-content {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    display: flex;
+    z-index: 699;
+    justify-content: space-between;
+
+
+
+    .sidebar {
+        // padding-top: 25px;
+        position: relative;
+        width: 280px;
+        // min-height: calc(100vh - 55px);
+
+        // background: rgb(156, 176, 197);
+        transition: all ease-in-out 0.3s;
+        z-index: 899;
+
+
+
+
+        .adv-btn-showhide {
+            border: none;
+            // background: rgba(102, 112, 152, 0.6);
+            position: absolute;
+            top: 5px;
+            padding: 5px;
+            // z-index: 900;
+            cursor: pointer;
+            opacity: .8;
+            transition: all ease-in-out .3s;
+            // width: 10%;
+
+            i {
+                // color: #fff;
+                font-weight: bold;
+                font-size: 1.2rem;
+            }
+
+            // &.hide {
+
+            //     // left: 7px;
+            //     // opacity: 1;
+            //     // border-radius: 5px;
+            //     // padding: 10px;
+            // }
+
+            &:hover {
+
+                opacity: 1;
+
+            }
+        }
+
+
+        .content-links {
+            box-shadow: 9px 11px 22px -5px rgba(0, 0, 0, 0.30);
+            width: 90%;
+            min-height: 100%;
+            max-height: 100%;
+            overflow: hidden;
+            overflow-y: auto;
+
+                    /* Chrome, Edge and Safari */
+        &::-webkit-scrollbar {
+            width: 5px;
+            height: 5px;
+        }
+
+        &::-webkit-scrollbar-track {
+            border-radius: 8px;
+            background-color: #FFFFFF;
+            border: 2px solid #FFFFFF;
+        }
+
+        &::-webkit-scrollbar-track:hover {
+            background-color: #2f5d6e;
+        }
+
+        &::-webkit-scrollbar-track:active {
+            background-color: #2f5d6e;
+        }
+
+        &::-webkit-scrollbar-thumb {
+            border-radius: 5px;
+            background-color: #a4adb0;
+        }
+
+        &::-webkit-scrollbar-thumb:hover {
+            background-color: #113441;
+        }
+
+        &::-webkit-scrollbar-thumb:active {
+            background-color: #2f5d6e;
+        }
+
+            header {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                min-height: 40px;
+                max-height: 70px;
+                border-bottom: 1px solid #ddd;
+                padding: 10px;
+                margin: 0 15px;
+
+                img {
+                    height: 40px !important;
+                }
+            }
+        }
+    }
+
+    .content {
+        padding: 15px;
+        width: calc(100vw - 300px);
+        overflow: hidden;
+        overflow-y: auto;
+        transition: all ease-in-out 0.3s;
+        z-index: 899;
+        min-height: 100%;
+        // background-color: #d26161;
+    }
+
+
+
+    &.sb-position-right {
+        flex-direction: row-reverse;
+
+        .sidebar {
+            margin-right: 0;
+
+            .adv-btn-showhide {
+                right: 240px;
+                border-radius: 5px 0 0 5px;
+
+
+                // &.hide {
+                //     right: 5px;
+                // }
+            }
+
+            .content-links {
+                right: 0;
+                position: absolute;
+            }
+
+            &.hide {
+                margin-right: -240px;
+
+                &~.content {
+                    width: 100%;
+                }
+            }
+
+            &.withHover {
+                min-width: 280px;
+                margin-right: calc((280px - 20px) * -1);
+                ;
+
+                &.hide {
+                    margin-right: calc((280px - 20px) * -1) - 20px;
+                }
+
+                &:hover {
+                    margin-right: 0px;
+                }
+
+                &~.content {
+                    width: 100%
+                }
+            }
+
+        }
+
+    }
+
+    &.sb-position-left {
+        flex-direction: row;
+
+        .sidebar {
+            margin-left: 0;
+
+            .adv-btn-showhide {
+                left: 240px;
+                border-radius: 0 5px 5px 0;
+
+
+                // &.hide {
+                //     // left: 5px;
+                // }
+            }
+
+            &.hide {
+                margin-left: -240px;
+
+                &~.content {
+                    width: 100%;
+                }
+            }
+
+            &.withHover {
+                min-width: 280px;
+                margin-left: calc((280px - 20px) * -1);
+
+                &.hide {
+                    margin-left: calc((280px - 20px) * -1) - 20px;
+                }
+
+                &:hover {
+                    margin-left: 0px !important;
+                }
+
+                &~.content {
+                    width: 100%;
+
+                }
+            }
+
+        }
+
+    }
+
+
+
+}
+
+//dark
+.sidebar-content.dark {
+
+
+    .sidebar {
+
+        .adv-btn-showhide {
+            background-color: #1a1d1f;
+
+            i {
+                color: #fff;
+            }
+        }
+
+        .content-links {
+            background-color: #1a1d1f;
+
+            header {
+                color: #fff;
+                border-bottom: 1px solid rgba(221, 221, 221, 0.4);
+
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 720px) {
+
+    .sidebar-content {
+
+        &.sb-position-right {
+
+            .sidebar {
+                margin-right: -280px;
+
+                &.withHover {
+                    margin-right: -280px;
+                    opacity: .3;
+                    min-width: 300px;
+                    position: absolute;
+
+                    &:hover {
+                        margin-right: 0px;
+                        opacity: 1;
+                    }
+                }
+            }
+
+            .content {
+                width: 100%;
+            }
+        }
+
+        &.sb-position-left {
+
+            .sidebar {
+                margin-left: -280px;
+
+                &.show:not(.withHover) {
+                    position: absolute;
+                    min-width: 100%;
+                    margin-left: 0px;
+                }
+
+                &.withHover {
+                    margin-left: calc((280px - 20px) * -1);
+                    ;
+                    position: absolute;
+
+                    &.hide {
+
+                        &~.content {
+                            margin-left: 0px;
+
+                        }
+
+                    }
+
+                    &~.content {
+                        margin-left: 20px;
+
+
+                    }
+
+                    &:hover {
+                        min-width: 100%;
+                        margin-left: 0px;
+                    }
+                }
+            }
+
+            .content {
+                width: 100%;
+            }
+        }
+
+    }
+
+}
