@@ -2,8 +2,9 @@
 
   <li *ngIf="link.path" class="">
     <button class="adv-btn-link" [routerLink]="link.path">
-      <div>
-        <span [innerHTML]="link.icon" class=""></span>{{link.label}}
+      <div>      
+        <span *ngIf="link.icon" [innerHTML]="link.icon" class="icon"></span>
+        {{link.label}}
       </div>
     </button>
   </li>

@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { NavigationContentComponent } from './navigation-content/navigation-content.component';
 import { RouterModule } from '@angular/router';
 import { NavigationLinkComponent } from './navigation-content/modules/navigation-link/navigation-link.component';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -13,7 +14,8 @@ import { NavigationLinkComponent } from './navigation-content/modules/navigation
   ],
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    FormsModule
   ],
   exports: [
     NavigationContentComponent

@@ -4,8 +4,8 @@
 
     .adv-links-sub {
         list-style: none;
-        // background-color: rgba(238, 238, 238, 0.3);
         width: 100%;
+        padding-left: 0 !important;
 
         &.adv-hide-submenu {
             display: none;
@@ -16,10 +16,12 @@
         }
 
         .adv-links {
-            padding: 0 0 0 15px;
+            padding: 0 0 0 10px;
 
             .adv-btn-link {
                 border-left: 1px solid rgba(0, 0, 0, 0.2);
+                margin: 0;
+                border-radius: 0 5px 5px 0 ;
             }
         }
 
@@ -52,6 +54,7 @@
     }
 
     .adv-btn-expand {
+        margin: 5px 0;
 
         .icon{
             margin-right: 5px;
@@ -64,13 +67,15 @@
     }
 
     .adv-btn-link {
-        // margin: 5px 0;
-        // background-color: rgba(11, 11, 11, 0.246);
-        border-radius: 0px;
-
+        margin: 5px 0;
+        background-color: rgba(221, 221, 221, 0);
 
         &:hover {
             background-color: rgba(11, 11, 11, 0.1);
+        }
+
+        .icon{
+            margin-right: 5px;
         }
 
     }
@@ -89,7 +94,12 @@
 
 
 
-//dark
+
+
+
+
+
+//theme: dark ------------------------------------------------------------
 .adv-links.dark{
     color:#fff;
 

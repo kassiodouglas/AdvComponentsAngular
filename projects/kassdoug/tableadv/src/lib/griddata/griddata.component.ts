@@ -17,7 +17,7 @@ export class GriddataComponent implements OnInit, OnChanges, AfterViewInit {
 
 
   driver: string = 'laravel-eloquent' // chave simbolica para determinar o uso do componente com backend em laravel com eloquent
-  version:string = '1.0.4'
+  version:string = '1.0.9'
   message:string = ''
 
   /** Define o estado da tabela maximizado ou normal */
@@ -46,7 +46,10 @@ export class GriddataComponent implements OnInit, OnChanges, AfterViewInit {
   totalRegisterInPage: number = 0
 
   /** Determina se o header da tabela é fixo ou não */
-  isFixed = false;
+  @Input() isFixed = false;
+
+  /** Define o total de registros por pagina inicial */
+  @Input() registers_per_page_initial:number = 5;
 
 
   /** Filtros dos dados para o backend */
@@ -79,12 +82,14 @@ export class GriddataComponent implements OnInit, OnChanges, AfterViewInit {
 
   ngOnInit() {
 
+    this.totalRegisterPerPage = this.registers_per_page_initial
+
   }
 
   ngOnChanges(changes: SimpleChanges): void {
 
     this.data = changes['data'].currentValue
-    if (this.data !== null)
+    if (this.data !== null && this.data !== undefined)
       this.config()
  
 
@@ -158,16 +163,16 @@ export class GriddataComponent implements OnInit, OnChanges, AfterViewInit {
   /** Configura os dados */
   config() {
 
-    if(this.data.data.length == 0){
-      this.data = null
-      this.totalRegisters = 0
-      this.totalRegisterInPage = 0
-      this.message = 'Nenhuma informação carregada'
-    }else{
-      this.totalRegisters = this.data.total
-      this.totalRegisterInPage = this.data.length
-    }
-    this.setTotalPages()
+      if(this.data.data.length == 0){
+        this.data = null
+        this.totalRegisters = 0
+        this.totalRegisterInPage = 0
+        this.message = 'Nenhuma informação carregada'
+      }else{
+        this.totalRegisters = this.data.total
+        this.totalRegisterInPage = this.data.length
+      }
+      this.setTotalPages()
   }
 
 

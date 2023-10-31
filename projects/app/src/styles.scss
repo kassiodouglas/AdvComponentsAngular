@@ -1,3 +1,7 @@
+
+@import url("https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.1/css/bootstrap.min.css");
+@import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
+
 *,html, body{
     padding: 0;
     margin: 0;
@@ -8,4 +12,22 @@ body{
     width: 100vw;
     height: 100vh;
     background-color: rgb(238, 238, 238);
+}
+
+
+pre{
+    background-color: #313131;
+    padding: 10px;
+    color: #fff;
+    border-radius: 5px;
+}
+
+
+.theme-box{
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    background-color: red;
+    padding: 15px;
+    border-radius: 5px;
 }
