@@ -231,27 +231,39 @@ export class Service {
     return [
 
       {
-        label: 'Home', icon: '<i class="fa-solid fa-house"></i>', path:'/',
+        path:'/',label: 'Home', icon: '<i class="fa-solid fa-house"></i>', permissions:['home']
        },
 
       {divider:"Componentes"},
   
       {
-       label: 'TableAdv', icon: '<i class="fa-solid fa-table-list"></i>', path:'/componentes/tableadv',
+        path:'/componentes/tableadv', label: 'TableAdv', icon: '<i class="fa-solid fa-table-list"></i>',  permissions:['TableAdv']
       },
   
       {
-        id: 'sidebaradv', label: 'SidebarAdv', icon: '<i class="fa-solid fa-bars-staggered"></i>',
+        id: 'sidebaradv', label: 'SidebarAdv', icon: '<i class="fa-solid fa-bars-staggered"></i>', permissions:['sidebar'],
         links:[
-          {path:'/componentes/sidebar/esquerdo',label: 'Lado esquerdo'},                      
+          {path:'/componentes/sidebar/esquerdo',label: 'Lado esquerdo', permissions:['esq','home']},                      
           {path:'/componentes/sidebar/direito',label: 'Lado direito'},                    
           {path:'/componentes/sidebar/hover',label: 'Com hover'},                    
           {path:'/componentes/sidebar/botao',label: 'Com botão'},                    
           // {path:'/componentes/sidebar/sem-topbar',label: 'Sem topbar'},                    
-          {path:'/componentes/sidebar/topbar',label: 'Com topbar'},            
+          {path:'/componentes/sidebar/topbar',label: 'Com topbar'},  
+          
+          
+          {
+                id: 'sidebaradv3', label: 'SidebarAdv', icon: '<i class="fa-solid fa-bars-staggered"></i>',
+                links:[
+                  {path:'/componentes/sidebar/esquerdo',label: 'Lado esquerdo3'},
+                ]
+            }   
+          
     
         ]
-      }, 
+      },             
+
+
+     
   
     ]
   }

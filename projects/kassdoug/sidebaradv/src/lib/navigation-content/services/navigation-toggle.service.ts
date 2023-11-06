@@ -8,6 +8,7 @@ import { Injectable, EventEmitter } from '@angular/core';
 export class EventEmitterService {
 
   public onNavigaionToggle: EventEmitter<any> = new EventEmitter();
+  public onSetFav: EventEmitter<any> = new EventEmitter();
 
   constructor() { }
 

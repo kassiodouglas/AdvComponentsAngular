@@ -1,13 +1,18 @@
 <ul class="adv-links  {{theme}}">
 
-  <li *ngIf="link.path" class="">
+  <li *ngIf="link.path && !usePermissions || usePermissions && link.path && checkPermission(link.permissions)" class="adv-btn-link-area">
     <button class="adv-btn-link" [routerLink]="link.path">
       <div>      
         <span *ngIf="link.icon" [innerHTML]="link.icon" class="icon"></span>
         {{link.label}}
       </div>
     </button>
+
+    <i *ngIf="!link.favArea" class="pointer fa-regular fa-star starfav" [ngClass]="{'active':link.isfav}" [id]="'fav_'+link.label!.replace(' ','').toLowerCase()" (click)="setFav(link)"></i>
+
   </li>
+
+
 
 
   <li *ngIf="link.divider" class="">
@@ -15,7 +20,9 @@
   </li>
 
 
-  <li *ngIf="link.id" class="adv-area-sub">
+
+
+  <li *ngIf="link.id && !usePermissions || usePermissions && link.id && checkPermission(link.permissions)" class="adv-area-sub">
 
     <button (click)="arrow()" class="adv-btn-expand" [ngClass]="{'active':arrowActive}">
       <div>
@@ -29,7 +36,7 @@
       <ul class="adv-links-sub" [ngClass]="{'adv-hide-submenu': !arrowActive}">
 
         <li *ngFor="let sub of link.links">
-          <app-navigation-link [link]="sub" [theme]="theme"></app-navigation-link>
+          <app-navigation-link [link]="sub" [theme]="theme" [permissions]="permissions" [usePermissions]="usePermissions"></app-navigation-link>
         </li>
 
       </ul>

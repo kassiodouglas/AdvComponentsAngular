@@ -11,9 +11,9 @@ import { TableAdvModule } from '@kassdoug/tableadv';
 import { SidebaradvModule } from '@kassdoug/sidebaradv';
 
 import { RouterModule } from '@angular/router';
-import { LayoutHomeComponent } from './components/home/layout.component';
+// import { LayoutHomeComponent } from './components/home/layout.component';
 import { HomeComponent } from './components/home/home.component';
-import { TopbarComponent } from './components/topbar/topbar.component';
+import { TopbarComponent } from './components/@layouts/topbar/topbar.component';
 import { TableComponent } from './components/tableadv/table/table.component';
 import { LayoutSidebarComponent } from './components/sidebaradv/left/layout.component';
 import { LeftComponent } from './components/sidebaradv/left/left.component';
@@ -25,13 +25,15 @@ import { LayoutSidebarButtonComponent } from './components/sidebaradv/button/lay
 import { LayoutSidebarWithtopbarComponent } from './components/sidebaradv/withtopbar/layout.component';
 import { WithtopbarComponent } from './components/sidebaradv/withtopbar/withtopbar.component';
 import { ButtonComponent } from './components/sidebaradv/button/button.component';
+import { LayoutComponent } from './components/@layouts/layout.component';
+import { HeaderComponent } from './components/@layouts/header/header.component';
 
 
 
 
 const routes: Routes = [
   {
-    path: "", component: LayoutHomeComponent,
+    path: "", component: LayoutComponent,
     children: [
       { path: "", component: HomeComponent },
       { path: "componentes/tableadv", component: TableComponent },
@@ -82,7 +84,7 @@ const routes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-    LayoutHomeComponent,
+    LayoutComponent,
     HomeComponent,
     TopbarComponent,
     LayoutSidebarComponent,
@@ -91,7 +93,8 @@ const routes: Routes = [
     LayoutSidebarHoverComponent,
     LayoutSidebarButtonComponent,
     LayoutSidebarWithtopbarComponent, 
-    TableComponent
+    TableComponent, 
+    HeaderComponent
   ],
   imports: [
     RouterModule.forRoot(routes),

@@ -1,0 +1,49 @@
+<div class="row">
+
+  <div class="col-12">
+    <div class="small rounded p-2 d-flex align-items-center justify-content-between">
+      Temas
+      <div class="btn-group">
+      <button type="button" class="h6 btn btn-sm btn-light" (click)="themer('')"><i
+          class="small text-dark fa-solid fa-map"></i></button>
+      <button type="button" class="h6 btn btn-sm btn-dark" (click)="themer('dark')"><i
+          class="small text-light fa-solid fa-map"></i></button>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-12">    
+    <div class="small rounded p-2 d-flex align-items-center justify-content-between">
+      <div *ngIf="search">Desativar pesquisa</div>
+      <div *ngIf="!search">Ativar pesquisa</div>
+      <button type="button" class="h6 btn btn-sm btn-light rounded-circle mx-1" (click)="searcher()"> 
+        <i *ngIf="!search" class="fa-solid fa-magnifying-glass" style="opacity: .4;"></i>
+        <i *ngIf="search" class="text-success fa-solid fa-magnifying-glass"></i> 
+      </button>    
+    </div>
+  </div>
+
+
+  <div class="col-12">    
+    <div class="small rounded p-2 d-flex align-items-center justify-content-between">
+      <div *ngIf="hover">Desativar hover</div>
+      <div *ngIf="!hover">Ativar hover</div>
+      <button type="button" class="h6 btn btn-sm btn-light rounded-circle mx-1" (click)="withhover()"> 
+        <i *ngIf="!hover" class="fa-solid fa-arrow-right-arrow-left" style="opacity: .4;"></i>   
+        <i *ngIf="hover" class="text-success fa-solid fa-arrow-right-arrow-left"></i>    
+      </button>    
+    </div>
+  </div>
+
+  
+  <div class="col-12">    
+    <div class="small rounded p-2 d-flex align-items-center justify-content-between">
+      <div>Posição</div>
+
+      <button type="button" class="h6 btn btn-sm btn-light mx-1" (click)="positioner()"> 
+        {{position}}
+      </button>    
+    </div>
+  </div>
+
+</div>

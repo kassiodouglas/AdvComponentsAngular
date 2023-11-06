@@ -1,14 +1,33 @@
 .adv-links {
     list-style: none;
     padding: 0 10px;
+    margin: 0 !important;
 
     .adv-links-sub {
         list-style: none;
         width: 100%;
         padding-left: 0 !important;
+        transition: all ease-in .8s, all ease-out .5s;
+        max-height: 100vh;
 
-        &.adv-hide-submenu {
-            display: none;
+        li{
+            position: relative;
+            opacity: 1;
+            transition: all ease-in .5s, all ease-out .8s, transform ease-in-out .3s;
+            max-height: 100vh;
+            transform: translateX(0);
+        }
+
+        &.adv-hide-submenu {           
+            max-height: 0; 
+            // display: none;     
+
+            li{   
+                margin-top:0;
+                opacity: 0;             
+                max-height: 0;   
+                transform: translateX(-100%);
+            }
 
             .adv-btn-link {
                 margin-top: 0;
@@ -66,18 +85,46 @@
         }
     }
 
-    .adv-btn-link {
-        margin: 5px 0;
-        background-color: rgba(221, 221, 221, 0);
+    .adv-btn-link-area{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
 
-        &:hover {
-            background-color: rgba(11, 11, 11, 0.1);
+        .adv-btn-link {
+            margin: 5px 0;
+            background-color: rgba(221, 221, 221, 0);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            &:hover {
+                background-color: rgba(11, 11, 11, 0.1);
+            }
+
+            .icon{
+                margin-right: 5px;
+            }    
+
         }
 
-        .icon{
-            margin-right: 5px;
-        }
+        .starfav{
+            cursor: pointer;
+            font-size: .8rem;
+            opacity: .3;
+            padding: 5px;
+            border-radius: 5px;
+            margin: 0 5px;
+            transition: all ease-in-out 0.4s;
 
+            &:hover{                
+                color: yellow;
+            }
+
+             &.active{
+                opacity: 1;
+                color: yellow;
+            }
+        }
     }
 
 
@@ -131,12 +178,15 @@
 
     }
 
-    .adv-links-sub {
-        // background-color: rgba(206, 34, 34, 0.3);
+    .adv-links-sub {     
 
         .adv-links {
             .adv-btn-link {
                 border-left: 1px solid rgba(255, 255, 255, 0.2);
+
+                &:hover{
+                    background-color: rgba(255, 255, 255, 0.1);
+                }
             }
         }
 

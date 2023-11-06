@@ -8,12 +8,19 @@
       <i class="fa-solid fa-xmark"></i>  
     </button>
 
-    <div class="content-links">      
-      
-      <header *ngIf="header" [innerHtml]="header"></header>
+    <div class="content-links">           
+
+      <div class="header">
+        <div *ngIf="!headerIsComponent, else headerContainer" [innerHTML]="header"></div>
+        <ng-template #headerContainer><ng-container #containerHeader></ng-container></ng-template> 
+      </div>
+
+      <div *ngIf="search" class="search border-bottom py-2">
+        <input type="text" class='form-control-search' (keyup)="searchLinks()" (change)="searchLinks()" [(ngModel)]="filter_link" placeholder="Buscar menu...">
+      </div>
     
-      <div *ngFor="let link of links">   
-        <app-navigation-link [link]="link" [theme]="theme"></app-navigation-link>
+      <div *ngFor="let link of links_list">   
+        <app-navigation-link [link]="link" [theme]="theme" [permissions]="permissions" [usePermissions]="usePermissions"></app-navigation-link>
       </div>
       
     </div>     
@@ -37,8 +44,7 @@
 
 
       <div *ngIf="!topbarIsComponent, else topbarContainer" [innerHTML]="topbar"></div>
-      <ng-template #topbarContainer><ng-container #containerTopbar></ng-container></ng-template>  
-
+      <ng-template #topbarContainer><ng-container #containerTopbar></ng-container></ng-template> 
       
 
     </div>

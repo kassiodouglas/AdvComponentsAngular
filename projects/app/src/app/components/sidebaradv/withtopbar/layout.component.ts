@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Service } from '../../../services/service.service';
-import { TopbarComponent } from '../../topbar/topbar.component';
+import { TopbarComponent } from '../../@layouts/topbar/topbar.component';
 
 @Component({
   selector: 'app-layout',

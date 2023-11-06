@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Service } from '../../services/service.service';
-import { OptionsComponent } from '../tableadv/options/options.component';
+// import { OptionsComponent } from '../tableadv/options/options.component';
 
 
 @Component({
@@ -12,7 +12,7 @@ export class HomeComponent {
 
 
   constructor(
-    private service: Service
+    // private service: Service
   ) { }
 
 
