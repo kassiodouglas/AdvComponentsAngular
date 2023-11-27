@@ -27,6 +27,7 @@ import { WithtopbarComponent } from './components/sidebaradv/withtopbar/withtopb
 import { ButtonComponent } from './components/sidebaradv/button/button.component';
 import { LayoutComponent } from './components/@layouts/layout.component';
 import { HeaderComponent } from './components/@layouts/header/header.component';
+import { TableadvIndividualFilterComponent } from './components/tableadv/tableadv-individual-filter/tableadv-individual-filter.component';
 
 
 
@@ -39,7 +40,13 @@ const routes: Routes = [
       { path: "componentes/tableadv", component: TableComponent },
     ]
   },
-
+  {
+    path: "", component: LayoutComponent,
+    children: [
+      { path: "", component: HomeComponent },
+      { path: "componentes/tableadv-individual-filter", component: TableadvIndividualFilterComponent },
+    ]
+  },
   {
     path: "componentes/sidebar", component: LayoutSidebarComponent,
     children: [
@@ -88,13 +95,13 @@ const routes: Routes = [
     HomeComponent,
     TopbarComponent,
     LayoutSidebarComponent,
-    LayoutSidebarRightComponent,    
-    RightComponent, 
+    LayoutSidebarRightComponent,
+    RightComponent,
     LayoutSidebarHoverComponent,
     LayoutSidebarButtonComponent,
-    LayoutSidebarWithtopbarComponent, 
-    TableComponent, 
-    HeaderComponent
+    LayoutSidebarWithtopbarComponent,
+    TableComponent,
+    HeaderComponent, TableadvIndividualFilterComponent
   ],
   imports: [
     RouterModule.forRoot(routes),
