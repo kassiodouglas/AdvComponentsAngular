@@ -281,7 +281,7 @@ export class GriddataComponent implements OnInit, OnChanges, AfterViewInit {
 
   /** Atualiza a quantidade a exiebir por pagina */
   setRegistrsPerPage() {
-    // console.log(this.totalRegisterPerPage)
+
     this.actualPage = 1
     this.setTotalPages()
 
@@ -305,7 +305,7 @@ export class GriddataComponent implements OnInit, OnChanges, AfterViewInit {
       return undefined
     }).filter((value:any) => value !== undefined); 
 
-    console.log(columnsSearched)
+
 
     this.whereColumn = columnsSearched
 
@@ -339,7 +339,7 @@ export class GriddataComponent implements OnInit, OnChanges, AfterViewInit {
       let id = elm.nativeElement.id
 
       if (id == "order_" + data.db) {
-        console.log(elm.nativeElement.classList)
+
 
         if (elm.nativeElement.classList.contains("fa-sort")) {
           elm.nativeElement.classList.remove("fa-sort")

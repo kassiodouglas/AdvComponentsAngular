@@ -29,11 +29,11 @@ export class LayoutComponent implements OnInit {
   topbar:any
   header:any
   theme:string = 'dark'
-  search:boolean = false
+  search:boolean = true
   hover:boolean = false
   position:string = 'left'
 
-  permissions:Array<string> = []
+  permissions:Array<string> = ['home']
 
 
   constructor(

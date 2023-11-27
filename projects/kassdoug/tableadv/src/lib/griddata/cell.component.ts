@@ -42,9 +42,9 @@ export class CellComponent implements OnInit {
       this.label = this.row[column_name]
     }
 
-    if(typeof(this.label)=='object'){
+    if(typeof(this.label)=='object' && this.label !== null && this.label !== ''){
 
-      if(this.label.component){
+      if(this.label.component !== null){
         this.componentized = true     
 
         let instance = this.label.component.instance
