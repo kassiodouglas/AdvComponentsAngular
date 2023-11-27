@@ -176,23 +176,33 @@ export class NavigationContentComponent implements OnInit, AfterContentInit {
   }
 
   recursiveSearch(data: any, text: string): any {
+   
+
+
+    if(data.hasOwnProperty('dividder')) return
+
+    text = text.toLowerCase()
 
     if (data.hasOwnProperty('label') && data.hasOwnProperty('path')) {
+
       let label = data['label'].toLowerCase()
-      if (label.includes(text.toLowerCase())) {
+
+      if (label.includes(text)) {
         return data;
       }
 
     } else if (data.hasOwnProperty('links')) {
+
       var ell: any = []
       data.links.forEach((el: any) => {
+
         var res = this.recursiveSearch(el, text)
         if (res !== undefined)
           ell.push(res)
       });
 
       if (ell.length == 0)
-        return []
+        return undefined
 
       data.links = ell
       return data
@@ -207,6 +217,7 @@ export class NavigationContentComponent implements OnInit, AfterContentInit {
     this.links_list.unshift(this.favorite_links)
     var filtered_menu: Array<any> = []
 
+
     if (this.filter_link != '') {
 
       this.links_list.forEach((obj: any) => {
@@ -214,6 +225,7 @@ export class NavigationContentComponent implements OnInit, AfterContentInit {
           var x = this.recursiveSearch(obj, this.filter_link)
 
           if (x !== undefined){
+
             if(x.hasOwnProperty('links') && x.links[0].length == 0) ''       
             else filtered_menu.push(x)
           }

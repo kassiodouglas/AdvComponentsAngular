@@ -16,7 +16,7 @@
       </div>
 
       <div *ngIf="search" class="search border-bottom py-2">
-        <input type="text" class='form-control-search' (keyup)="searchLinks()" (change)="searchLinks()" [(ngModel)]="filter_link" placeholder="Buscar menu...">
+        <input type="text" class='form-control-search' (keyup)="searchLinks()" [(ngModel)]="filter_link" placeholder="Buscar menu...">
       </div>
     
       <div *ngFor="let link of links_list">   
