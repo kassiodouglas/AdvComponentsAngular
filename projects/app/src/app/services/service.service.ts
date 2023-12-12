@@ -245,7 +245,7 @@ export class Service {
                     { path: '/componentes/sidebar/direito', label: 'Lado direito' },
                     { path: '/componentes/sidebar/hover', label: 'Com hover' },
                     { path: '/componentes/sidebar/botao', label: 'Com botão' },
-                    // {path:'/componentes/sidebar/sem-topbar',label: 'Sem topbar'},                    
+                    // {path:'/componentes/sidebar/sem-topbar',label: 'Sem topbar'},
                     { path: '/componentes/sidebar/topbar', label: 'Com topbar' },
 
 
@@ -258,7 +258,7 @@ export class Service {
 
 
                 ]
-            }         
+            }
 
         ]
     }

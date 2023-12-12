@@ -4,6 +4,7 @@ import { GriddataComponent } from './griddata.component';
 import { FormsModule } from '@angular/forms';
 import { ScrollDirective } from './scroll.directive';
 import { CellComponent } from './cell.component';
+import { InputIndividualSearchComponent } from './inputindividualsearch.component';
 
 @NgModule({
   imports: [
@@ -13,10 +14,11 @@ import { CellComponent } from './cell.component';
   exports:[
     GriddataComponent
   ],
-  declarations: [	
+  declarations: [
     GriddataComponent,
     ScrollDirective,
-    CellComponent
+    CellComponent,
+    InputIndividualSearchComponent
    ]
 })
 export class GriddataModule { }

@@ -1,16 +1,17 @@
 import { NgModule } from '@angular/core';
-import { GriddataComponent } from './griddata/griddata.component';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { CellComponent } from './griddata/cell.component';
 
+import { GriddataComponent } from './griddata/griddata.component';
+import { CellComponent } from './griddata/cell.component';
+import { InputIndividualSearchComponent } from './griddata/inputindividualsearch.component'
 
 
 @NgModule({
   declarations: [
-    GriddataComponent, CellComponent
+    GriddataComponent, CellComponent,InputIndividualSearchComponent
   ],
-  imports: [    
+  imports: [
     CommonModule,FormsModule, ReactiveFormsModule
   ],
   exports: [

@@ -5,13 +5,13 @@
   <small class="gd-version"> {{version}} </small>
 
   <!-- header -->
-  <div class="gd-header">    
-    
+  <div class="gd-header">
+
     <div class="gd-form-group">
 
       <input class='gd-input-search' placeholder="Pesquisar algum conteudo nas colunas..." [(ngModel)]="whereValue" (keyup.enter)="onSearch()">
       <button class='gd-btn' (click)="onSearch()" gd-tooltip="Faz a pesquisa solicitada">
-        <i class="fa-solid fa-magnifying-glass" ></i> 
+        <i class="fa-solid fa-magnifying-glass" ></i>
       </button>
       <button class='gd-btn' (click)="onCleanSearch()" gd-tooltip="Limpa a pesquisa e reseta os dados">
         <i class="fa-solid fa-broom"></i>
@@ -29,7 +29,7 @@
 
     </div>
 
-    <div class="gd-controls">  
+    <div class="gd-controls">
 
       <button (click)="emitGetData()" gd-tooltip="Atualiza os dados">
         <i class="fa-solid fa-rotate"></i>
@@ -38,7 +38,7 @@
       <button (click)="maximizeToggle()" gd-tooltip="Maximiza e minimiza">
         <i *ngIf="!screenMaximize" class="fa-solid fa-maximize"></i>
         <i *ngIf="screenMaximize" class="fa-solid fa-minimize"></i>
-      </button>    
+      </button>
 
     </div>
 
@@ -48,31 +48,41 @@
 
   <!-- body -->
   <div class="gd-body" appScrollListener (fixedHeader)="fixeHeader($event)">
-    
-    <div *ngIf="data == null" class="not-reg">{{message}} </div>    
+
+    <div *ngIf="data == null" class="not-reg">{{message}} </div>
 
     <table  *ngIf="data != null">
       <tr class="gd-header-row" [ngClass]="{'fixed': isFixed}">
-        <th class="gd-col" *ngFor="let col of gridHeader" [style.width]="col.width"> 
+        <th class="gd-col" *ngFor="let col of gridHeader" [style.width]="col.width">
 
           <div>
-              {{col.label}} 
+              {{col.label}}
 
-              <i *ngIf="col.order" style="cursor: pointer;" #elementOrder 
+              <i *ngIf="col.order" style="cursor: pointer;" #elementOrder
                 class="icon-order fa-solid fa-sort opacity-50 mx-2 px-1 btn-tabledata-order" id='order_{{col.order.db}}'
                 (click)="onReorder(col.order)">
-              </i>      
+              </i>
           </div>
         </th>
       </tr>
-      
+      <tr *ngIf="CheckIsShowRowSearch(gridHeader)">
+        <th class="gd-col" *ngFor="let col of gridHeader" [style.width]="col.width">
+          <InputIndividualSearch
+            (addFilterEvent)="addIndividualFilter($event)"
+            [search]="col.search"
+            *ngIf="col.individualfilter"
+          ></InputIndividualSearch>
+
+        </th>
+
+      </tr>
       <tr class="gd-body-row" *ngFor="let row of data.data; let i = index" [ngClass]="{'even': i % 2 !== 0}">
-        <td class="gd-col" *ngFor="let col of gridHeader" [style.width]="col.width"> 
-          <gd-cell [row]="row" [col]="col"></gd-cell>     
+        <td class="gd-col" *ngFor="let col of gridHeader" [style.width]="col.width">
+          <gd-cell [row]="row" [col]="col"></gd-cell>
         </td>
       </tr>
     </table>
-    
+
   </div>
 
 
@@ -85,7 +95,7 @@
       <div>Exibindo página <strong>{{actualPage}}</strong> de <strong>{{lastPage}}</strong></div>
       <div>Total de registros <strong>{{totalRegisters}}</strong></div>
     </div>
-    
+
     <div class="gd-pagination">
 
       <button [disabled]="1 == actualPage" [ngClass]="{'disabled': 1 == actualPage}" (click)="setFirstPage()"> <i class="fa-solid fa-backward"></i> </button>
@@ -97,7 +107,7 @@
       <button [disabled]="lastPage == actualPage" [ngClass]="{'disabled': lastPage == actualPage}" (click)="setLastPage()"> <i class="fa-solid fa-forward"></i> </button>
 
     </div>
-    
+
   </div>
 
 </div>

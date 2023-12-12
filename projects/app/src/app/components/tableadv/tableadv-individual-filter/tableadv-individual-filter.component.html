@@ -1,1 +1,14 @@
-<p>tableadv-individual-filter works!</p>
+<div class="container">
+
+
+
+  <tableadv
+    id='tableUsers'
+    [data]="gridData"
+    [gridHeader]="gridHeader"
+    (onGetData)="getData($event)">
+  </tableadv>
+
+
+
+</div>

@@ -57,7 +57,7 @@ export class GriddataComponent implements OnInit, OnChanges, AfterViewInit {
   orderdirection: string = 'asc'
   whereColumn: any | null = null
   whereValue: any | null = null
-
+  whereIndividual: any[] = []
 
   /** Dados externos */
   @Input() data: any | null = null
@@ -91,7 +91,7 @@ export class GriddataComponent implements OnInit, OnChanges, AfterViewInit {
     this.data = changes['data'].currentValue
     if (this.data !== null && this.data !== undefined)
       this.config()
- 
+
 
     // this.CONSOLE()
 
@@ -99,7 +99,7 @@ export class GriddataComponent implements OnInit, OnChanges, AfterViewInit {
 
   ngAfterViewInit(): void {
 
-    this.emitGetData()    
+    this.emitGetData()
   }
 
 
@@ -128,7 +128,7 @@ export class GriddataComponent implements OnInit, OnChanges, AfterViewInit {
     console.log('orderdirection', this.orderdirection)
     console.log('whereColumn', this.whereColumn)
     console.log('whereValue', this.whereValue)
-
+    console.log('whereIndividual', this.whereIndividual)
 
     console.log('---------------------------FIM CONSOLE---------------------------')
   }
@@ -188,7 +188,8 @@ export class GriddataComponent implements OnInit, OnChanges, AfterViewInit {
       orderby: this.orderby,
       orderdirection: this.orderdirection,
       whereColumn: this.whereColumn,
-      whereValue: this.whereValue
+      whereValue: this.whereValue,
+      whereIndividual: this.whereIndividual
     });
 
     this.removeLoading()
@@ -210,7 +211,7 @@ export class GriddataComponent implements OnInit, OnChanges, AfterViewInit {
   /** Gera um array com o total de paginas */
   setTotalPages() {
 
-    let tot = this.totalRegisters / this.totalRegisterPerPage 
+    let tot = this.totalRegisters / this.totalRegisterPerPage
     this.totalPages = (tot <= 1) ? 1 : Math.ceil(tot)
 
     this.lastPage = this.totalPages
@@ -303,9 +304,7 @@ export class GriddataComponent implements OnInit, OnChanges, AfterViewInit {
       if(col.search)
         return col.search
       return undefined
-    }).filter((value:any) => value !== undefined); 
-
-
+    }).filter((value:any) => value !== undefined);
 
     this.whereColumn = columnsSearched
 
@@ -315,8 +314,14 @@ export class GriddataComponent implements OnInit, OnChanges, AfterViewInit {
     if(this.whereValue.length >= 2 || this.whereValue.length==0){
       this.actualPage = 1
       this.emitGetData()
-    }   
+    }
   }
+
+  onIndividualSearch(search:any[]){
+    console.log(search)
+    console.log(this.whereValue)
+  }
+
 
   /** Limpa a pesquisa e reset os dados */
   onCleanSearch(){
@@ -364,6 +369,32 @@ export class GriddataComponent implements OnInit, OnChanges, AfterViewInit {
       }
 
     })
+
+    this.emitGetData()
+
+  }
+
+  /** metodo para verificar existencia do atritubo individualfilter */
+  CheckIsShowRowSearch(gridHeader:any): Boolean {
+
+    const objFilter = gridHeader.filter((col:any) => {
+      if( col.individualfilter)  return col
+    })
+
+    if(objFilter.length)
+      return true
+    else
+      return false
+  }
+
+  /** metodo para aplicar individualfilter */
+  addIndividualFilter(newFilter: any) {
+
+    this.whereIndividual = this.whereIndividual.filter((item) => {
+      return ( (item.field !== newFilter.field || item.model !== newFilter.model))
+    })
+
+    if (newFilter.value !== '' && newFilter.value !== null) this.whereIndividual.push(newFilter);
 
     this.emitGetData()
 
