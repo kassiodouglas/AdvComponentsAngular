@@ -1,14 +1,12 @@
-# @kassdoug/tableadv
+# Tableadv
 
 Componente Angular+2 para criação de uma table com recursos a mais. Uso com apis feitas com backend Laravel+Eloquent.
 
-## Configurações BACKEND
-O backend inicial foi feito uma api com Laravel na versão 10+.
-Mais informações de como contruir o backend, acesse: https://packagist.org/.
 
+# Backend
+Para informações sobre o backend Laravel, verifique o projeto em <a href="https://github.com/kassiodouglas/AdvComponentsAngular/">Github AdvComponentsAngular</a>.
 
-
-## Configurações FRONTEND
+## Configurações 
 Crie um componente, para o exemplo UsersComponent.
 
 Em `users-component.ts`:
@@ -59,11 +57,11 @@ As outras propriedades são:
 tableadvUsersHeader = [
     {
         db:"name", label:"Nome do usuário",
-        search: "name", order: {db:"name}
+        search: "name", order: {db:"name"}
     },
     {
         db:"email", label:"Email do usuário",
-        earch: "email", order: {db:"email}
+        search: "email", order: {db:"email"}
     }
 ]
 ```
@@ -74,15 +72,37 @@ A prop `search` pode ser uma string ou um objeto, se a pesquisa for feita na tab
 tableadvUsersHeader = [
     {
         db:"name", label:"Nome do usuário",
-        search: "name", order: {db:"name}
+        search: "name", order: {db:"name"}
     },
     {
         db:"email", label:"Email do usuário",
-        earch: "email", order: {db:"email}
+        search: "email", order: {db:"email"}
     },
     {
         db:"address.name", label:"Endereço do usuário",
         search: {model:"address", field:"name"}
+    }
+]
+```
+
+A prop `individualfilter` indica quais colunas podem ser pesquisadas individualmente ou em grupo, funciona em conjunto com a prop search. Seta como 'true' para funcionar:
+
+```
+tableadvUsersHeader = [
+    {
+        db:"name", label:"Nome do usuário",
+        search: "name", order: {db:"name"},
+        individualfilter: true
+    },
+    {
+        db:"email", label:"Email do usuário",
+        search: "email", order: {db:"email"},
+        individualfilter: true
+    },
+    {
+        db:"address.name", label:"Endereço do usuário",
+        search: {model:"address", field:"name"},
+        individualfilter: true
     }
 ]
 ```
@@ -93,11 +113,11 @@ A prop `order` tem como propriedade obrigatória o 'db' que é o nome da coluna 
 tableadvUsersHeader = [
     {
         db:"name", label:"Nome do usuário",
-        search: "name", order: {db:"name}
+        search: "name", order: {db:"name"}
     },
     {
         db:"email", label:"Email do usuário",
-        earch: "email", order: {db:"email}
+        search: "email", order: {db:"email"}
     },
     {
         db:"address.name", label:"Endereço do usuário",
@@ -170,11 +190,11 @@ Essa nova coluna, deve ser informada na prop 'tableadvUsersHeader':
 tableadvUsersHeader = [
     {
         db:"name", label:"Nome do usuário",
-        search: "name", order: {db:"name}
+        search: "name", order: {db:"name"}
     },
     {
         db:"email", label:"Email do usuário",
-        earch: "email", order: {db:"email}
+        search: "email", order: {db:"email"}
     },
     {
         db:"address.name", label:"Endereço do usuário",
@@ -200,11 +220,11 @@ Você pode criar uma coluna com base em um componente externo. Basta criar uma n
 tableadvUsersHeader = [
     {
         db:"name", label:"Nome do usuário",
-        search: "name", order: {db:"name}
+        search: "name", order: {db:"name"}
     },
     {
         db:"email", label:"Email do usuário",
-        earch: "email", order: {db:"email}
+        search: "email", order: {db:"email"}
     },
     {
         db:"address.name", label:"Endereço do usuário",

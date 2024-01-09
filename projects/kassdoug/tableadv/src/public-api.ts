@@ -2,6 +2,5 @@
  * Public API Surface of angular
  */
 
-
-export * from './lib/griddata/griddata.component';
-export * from './lib/angular.module';
+export * from './components/table/table.component';
+export * from './table.module';

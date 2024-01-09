@@ -49,12 +49,13 @@
   <!-- body -->
   <div class="gd-body" appScrollListener (fixedHeader)="fixeHeader($event)">
 
-    <div *ngIf="data == null" class="not-reg">{{message}} </div>
+    <div *ngIf="data == null" class="not-reg">{{message}}</div>
+    <button *ngIf="data == null" class="p-2 btn btn-sm btn-outline-dark" (click)="onCleanSearch()">Recarregar <i class="fa-solid fa-broom"></i></button> 
 
     <table  *ngIf="data != null">
       <tr class="gd-header-row" [ngClass]="{'fixed': isFixed}">
-        <th class="gd-col" *ngFor="let col of gridHeader" [style.width]="col.width">
 
+        <th class="gd-col" *ngFor="let col of gridHeader" [style.width]="col.width">
           <div>
               {{col.label}}
 
@@ -65,6 +66,7 @@
           </div>
         </th>
       </tr>
+
       <tr *ngIf="CheckIsShowRowSearch(gridHeader)">
         <th class="gd-col" *ngFor="let col of gridHeader" [style.width]="col.width">
           <InputIndividualSearch
@@ -72,10 +74,9 @@
             [search]="col.search"
             *ngIf="col.individualfilter"
           ></InputIndividualSearch>
-
         </th>
-
       </tr>
+
       <tr class="gd-body-row" *ngFor="let row of data.data; let i = index" [ngClass]="{'even': i % 2 !== 0}">
         <td class="gd-col" *ngFor="let col of gridHeader" [style.width]="col.width">
           <gd-cell [row]="row" [col]="col"></gd-cell>
