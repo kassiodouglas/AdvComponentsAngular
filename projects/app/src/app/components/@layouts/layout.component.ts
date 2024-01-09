@@ -29,7 +29,7 @@ export class LayoutComponent implements OnInit {
   topbar:any
   header:any
   theme:string = 'dark'
-  search:boolean = true
+  search:boolean = false
   hover:boolean = false
   position:string = 'left'
 

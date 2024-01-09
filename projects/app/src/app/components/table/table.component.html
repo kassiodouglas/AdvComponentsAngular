@@ -1,0 +1,10 @@
+<div class="container mt-2">
+  <h4 class="border-bottom pb-2">Table</h4>
+  <div>
+    <div class="row">
+
+      <tableadv [id]="tableadvIdUser" [data]="tableadvUsers" [gridHeader]="tableadvUsersHeader" (onGetData)="getDataUsers($event)"></tableadv>
+      
+    </div>
+  </div>
+</div>
