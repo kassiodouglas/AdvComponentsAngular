@@ -158,6 +158,7 @@ $sidebar-width: 250px;
                 justify-content: center;
                 align-items: center;
                 min-height: 40px;
+                // width: 100%;
                 // max-height: 70px;
                 border-bottom: 1px solid #ddd;
                 padding: 10px;
@@ -232,7 +233,7 @@ $sidebar-width: 250px;
         .sidebar .btn-showhide,
         .topbar .btn-showhide {
             border: none;
-            padding: 5px;
+            padding: 7px;
             cursor: pointer;
             opacity: .8;
             transition: all ease-in-out .3s;

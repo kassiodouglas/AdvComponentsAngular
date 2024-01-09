@@ -2,5 +2,5 @@
  * Public API Surface of sidebaradv
  */
 
-export * from './lib/navigation-content/navigation-content.component';
-export * from './lib/sidebaradv.module';
+export * from './components/content/content.component';
+export * from './sidebaradv.module';

@@ -1,16 +1,16 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NavigationContentComponent } from './navigation-content/navigation-content.component';
+import { ContentComponent } from './components/content/content.component';
 import { RouterModule } from '@angular/router';
-import { NavigationLinkComponent } from './navigation-content/modules/navigation-link/navigation-link.component';
+import { LinkComponent } from './components/link/link.component';
 import { FormsModule } from '@angular/forms';
 
 
 
 @NgModule({
   declarations: [
-    NavigationContentComponent, 
-    NavigationLinkComponent
+    ContentComponent, 
+    LinkComponent
   ],
   imports: [
     CommonModule,
@@ -18,7 +18,7 @@ import { FormsModule } from '@angular/forms';
     FormsModule
   ],
   exports: [
-    NavigationContentComponent
+    ContentComponent
   ]
 })
 export class SidebaradvModule { }

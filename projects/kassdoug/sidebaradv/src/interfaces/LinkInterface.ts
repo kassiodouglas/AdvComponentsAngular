@@ -1,11 +1,12 @@
-export interface NavigationLinkInterface {
+export interface Link {
     id?:string
     path?:string,
     label?:string,
     icon?:string,
-    links?:Array<NavigationLinkInterface>,
+    links?:Array<Link>|undefined,
     divider?:string,
     isfav?:boolean,
     favArea?:boolean,
-    permissions?:Array<any>
+    permissions?:Array<any>,
+    tags?:Array<string>
 }

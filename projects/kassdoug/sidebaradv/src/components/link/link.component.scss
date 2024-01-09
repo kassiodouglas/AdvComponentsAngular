@@ -117,12 +117,12 @@
             transition: all ease-in-out 0.4s;
 
             &:hover{                
-                color: yellow;
+                color: rgb(163, 163, 15);
             }
 
              &.active{
                 opacity: 1;
-                color: yellow;
+                color: rgb(163, 163, 15);
             }
         }
     }
