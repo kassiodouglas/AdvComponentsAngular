@@ -1,6 +1,6 @@
 {
   "name": "@kassdoug/sidebaradv",
-  "version": "1.1.6",
+  "version": "1.1.7",
   "author": {"name": "Kássio Douglas","email": "kass.doug@gmail.com"},
   "description": "Componente que gera uma sidebar com interação com contedo e barra superior",
   "keywords": ["Angular","Sidebar","Content", "Component"],

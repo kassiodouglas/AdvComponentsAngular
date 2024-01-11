@@ -27,7 +27,7 @@ export class TableComponent implements OnInit, OnChanges, AfterViewInit {
   @Input() id!: string;
 
   driver: string = 'laravel-eloquent'; // chave simbolica para determinar o uso do componente com backend em laravel com eloquent
-  version: string = '1.2.1';
+  version: string = '1.2.2';
   message: string = '';
 
   /** Define o estado da tabela maximizado ou normal */
