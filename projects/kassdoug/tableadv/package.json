@@ -2,6 +2,9 @@
   "name": "@kassdoug/tableadv",
   "version": "1.2.1",
   "author": {"name": "Kássio Douglas","email": "kass.doug@gmail.com"},
+  "contributors":[
+    {"name": "Poncio Elias","email": "poncio.oliveira@gmail.com"}
+  ],
   "description": "Componente Angular 16+ para criação de uma table com amis recursos. Projeto com base na ideia da lib DataTables",
   "keywords": ["Angular","Table","DataTables", "Component"],
   "peerDependencies": {
