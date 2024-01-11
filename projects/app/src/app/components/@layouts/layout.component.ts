@@ -11,9 +11,9 @@ import { HeaderEmitterService } from './header/header-emitter.service';
   <sidebaradv 
     [links]="sidebarLinks" 
     [header]="header"
-    [topbar]="topbar"
     [permissions]="permissions"
     [usePermissions]="true"
+  
 
     [withHover]="hover"
     [search]="search"
