@@ -28,12 +28,12 @@ export class ContentComponent implements OnInit, AfterContentInit {
   favorite_links: Link = {
     id: 'favoriteLinks',
     label: 'Links Favoritos (0)',
-    icon: '<i class="fa-solid fa-star"></i>',
+    icon: '<i class="text-warning fa-solid fa-star"></i>',
     links: [],
   };
 
   @Input()
-  header: any;
+  header: any = null;
   headerIsComponent = false;
   @ViewChild('containerHeader', { read: ViewContainerRef })
   containerHeader!: ViewContainerRef;

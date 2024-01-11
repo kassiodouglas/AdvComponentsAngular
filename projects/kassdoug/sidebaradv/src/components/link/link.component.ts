@@ -12,7 +12,7 @@ export class LinkComponent implements OnInit {
   link!: Link;
 
   @Input()
-  theme: string = 'default';
+  theme: string = 'light';
 
   @Output()
   onSetfav: EventEmitter<any> = new EventEmitter();
@@ -42,7 +42,7 @@ export class LinkComponent implements OnInit {
 
   /** Seta ou retira um link como favorito */
   setFav(link: any) {
-    var id = 'fav_' + link.label.replace(' ', '').toLowerCase();
+    var id = 'fav_' + link.label.replace(/[^\w\s]/gi, '').replace(/\s+/g, '').toLowerCase();
     var star = document.querySelector(`#${id}`);
 
     var storage = localStorage.getItem('favoriteLinks');
@@ -57,9 +57,13 @@ export class LinkComponent implements OnInit {
         }
       });
       star?.classList.remove('active');
+      star?.classList.remove('fa-solid');
+      star?.classList.add('fa-regular');
     } else {
       links.push(link);
       star?.classList.add('active');
+      star?.classList.add('fa-solid');
+      star?.classList.remove('fa-regular');
     }
 
     localStorage.setItem('favoriteLinks', JSON.stringify(links));

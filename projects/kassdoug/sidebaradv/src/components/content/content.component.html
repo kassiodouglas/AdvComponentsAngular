@@ -4,20 +4,19 @@
 
   <div class="sidebar" [ngClass]="{'withHover':withHover, 'hide': !showToggle, 'show':showToggle}" (onSidebarTooggle)="hoverSidebarToggle()">   
 
-    <button *ngIf="!withHover" class="btn-showhide" [ngClass]="{'hide':!showToggle}" (click)="sidebarToggle()">
-      <i class="fa-solid fa-xmark"></i>  
-    </button>
+     <div class="content-links">          
+      
+      <button *ngIf="!withHover" class="btn-showhide" [ngClass]="{'hide':!showToggle}" (click)="sidebarToggle()">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
 
-    <div class="content-links">           
-
-      <div class="header">
+      <div *ngIf="header!=null" class="header">
         <div *ngIf="!headerIsComponent, else headerContainer" [innerHTML]="header"></div>
         <ng-template #headerContainer><div style="width: 100%;"><ng-container #containerHeader></ng-container></div></ng-template> 
       </div>
 
-      <div *ngIf="search" class="search border-bottom py-2">
-
-        <div class="input-group p-3">
+      <div *ngIf="search" class="search p-2">
+        <div class="input-group">
           <input type="text" class="form-control form-control-sm" (keyup)="searchLinks()" placeholder="Buscar menu..." aria-label="Buscar menu..."  [(ngModel)]="filter_link">
           <button class="btn btn-sm btn-outline-secondary" type="button" (click)="clearInputSearchlinks()"><i class="fa-solid fa-broom"></i></button>
         </div>
@@ -36,14 +35,8 @@
 
     <div class="topbar" *ngIf="topbar != null; else noTopbar">
 
-      <button *ngIf="!withHover" class="btn-showhide" [ngClass]="{'hide':!showToggle}" (click)="sidebarToggle()">
-        <i class="fa-solid" 
-          [ngClass]="{
-            'fa-circle-chevron-right':(!showToggle && position=='left' || showToggle && position=='right'),
-            'fa-circle-chevron-left':(showToggle && position=='left' || !showToggle && position=='right'),
-
-          }"
-        ></i>    
+      <button *ngIf="!withHover && !showToggle" class="btn-showhide" [ngClass]="{'hide':!showToggle}" (click)="sidebarToggle()">
+        <i class="fa-solid fa-bars"></i>    
       </button>
 
 
@@ -54,7 +47,7 @@
     </div>
 
     <ng-template #noTopbar>      
-      <button *ngIf="!withHover" class="btn-showhide" [ngClass]="{'hide':!showToggle}" (click)="sidebarToggle()">
+      <!-- <button *ngIf="!withHover" class="btn-showhide" [ngClass]="{'hide':!showToggle}" (click)="sidebarToggle()">
         <i class="fa-solid" 
           [ngClass]="{
             'fa-circle-chevron-right':(!showToggle && position=='left' || showToggle && position=='right'),
@@ -62,6 +55,9 @@
 
           }"
         ></i>    
+      </button> -->
+      <button *ngIf="!withHover && !showToggle" class="btn-showhide" [ngClass]="{'hide':!showToggle}" (click)="sidebarToggle()">
+        <i class="fa-solid fa-bars"></i>    
       </button>
     </ng-template>
     

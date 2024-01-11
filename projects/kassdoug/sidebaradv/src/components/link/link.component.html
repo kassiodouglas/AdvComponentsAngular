@@ -2,13 +2,13 @@
 
   <li *ngIf="link.path && !usePermissions || usePermissions && link.path && checkPermission(link.permissions)" class="adv-btn-link-area">
     <button class="adv-btn-link" [routerLink]="link.path">
-      <div>      
-        <span *ngIf="link.icon" [innerHTML]="link.icon" class="icon"></span>
+      <div class="label-area">      
+        <div *ngIf="link.icon" [innerHTML]="link.icon" class="icon"></div>
         {{link.label}}
       </div>
     </button>
 
-    <i *ngIf="!link.favArea" class="pointer fa-regular fa-star starfav" [ngClass]="{'active':link.isfav}" [id]="'fav_'+link.label!.replace(' ','').toLowerCase()" (click)="setFav(link)"></i>
+    <i *ngIf="!link.favArea" class="pointer fa-star starfav" [ngClass]="{'active':link.isfav, 'fa-solid':link.isfav, 'fa-regular':!link.isfav}" [id]="'fav_'+link.label!.replace(' ','').toLowerCase()" (click)="setFav(link)"></i>
 
   </li>
 
@@ -25,11 +25,12 @@
   <li *ngIf="link.id && !usePermissions || usePermissions && link.id && checkPermission(link.permissions)" class="adv-area-sub">
 
     <button (click)="arrow()" class="adv-btn-expand" [ngClass]="{'active':arrowActive}">
-      <div>
-        <span *ngIf="link.icon" [innerHTML]="link.icon" class="icon"></span>
+      <div class="label-area"> 
+        <div *ngIf="link.icon" [innerHTML]="link.icon" class="icon"></div>
         {{link.label}}
       </div>
-      <span class='arrow'><i [ngClass]="arrowActive ? 'fa-chevron-down' : 'fa-chevron-right'" class="fa-solid fa-chevron-down small"></i></span>
+      <!-- <span class='arrow'><i [ngClass]="arrowActive ? 'fa-chevron-down' : 'fa-chevron-right'" class="fa-solid fa-chevron-down small"></i></span> -->
+      <span class='arrow' [ngClass]="arrowActive? 'active':''"><i class="fa-solid fa-chevron-down small"></i></span>
     </button>
 
     <div class="" id="{{link.id}}">

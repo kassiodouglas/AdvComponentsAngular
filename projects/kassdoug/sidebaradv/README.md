@@ -191,3 +191,11 @@ O componente conta com sistema de favoritos no browser, existe um icone de estre
 
 ## Mobile
 Para telas menores que 720px, o componente altera sua configuração, abrangendo a tela toda e trabalhando sem 'hover' (withHover = false).
+
+
+<br><br>
+
+
+## Temas
+Temos 4 temas configurados light (default), dark, purple e blue.
+
