@@ -1,5 +1,5 @@
 
-<div class="adv-sidebar-content {{theme}} {{position}}">
+<div #advSidebarContent class="adv-sidebar-content {{theme}} {{position}}">
   
 
   <div class="sidebar" [ngClass]="{'withHover':withHover, 'hide': !showToggle, 'show':showToggle}" (onSidebarTooggle)="hoverSidebarToggle()">   
@@ -23,7 +23,7 @@
       </div>
     
       <div *ngFor="let link of links_list">   
-        <app-navigation-link [link]="link" [theme]="theme" [permissions]="permissions" [usePermissions]="usePermissions"></app-navigation-link>
+        <app-navigation-link [useFav]="useFav" [link]="link" [theme]="theme" [permissions]="permissions" [usePermissions]="usePermissions"></app-navigation-link>
       </div>
       
     </div>     

@@ -1,0 +1,56 @@
+<div class="all-area">
+  <div class="header-area">
+
+    <div class="btn-prev">
+      <button [disabled]="actualStep === 0" (click)="changeStep(actualStep - 1)">
+        <i class="fa-solid fa-chevron-left"></i>
+      </button>
+    </div>
+
+    <div class="steps-area">
+
+      <div class="step-buttom-area" *ngFor="let step of steps; let last = last; let i = index">
+
+        <div>
+
+          <button [disabled]="i == actualStep" [ngClass]="{
+              'inProgress': step.completed === 'progress',
+              'completed':step.completed === 'true',
+              'selected':i == actualStep,
+            }" (click)="changeStep(i)" s>
+            {{step.label}}
+          </button>
+
+          <div>
+            <small *ngIf="step.completed == 'true'">Concluido <i class="fa-solid fa-check"></i> </small>
+            <small *ngIf="step.completed == 'progress'">Em andamento</small>
+          </div>
+
+        </div>
+
+
+        <ng-container *ngIf="!last">
+          <i class="separator fa-solid fa-chevron-right"></i>
+        </ng-container>
+
+      </div>
+
+    </div>
+
+    <div class="btn-next">
+      <button [disabled]="actualStep === steps.length - 1" (click)="changeStep(actualStep + 1)">
+        <i class="fa-solid fa-angle-right"></i>
+      </button>
+    </div>
+
+  </div>
+
+
+
+
+
+  <div class="pages-area" [@fadeState]="statePageArea">
+    <ng-container #viewContainerRef></ng-container>
+  </div>
+
+</div>

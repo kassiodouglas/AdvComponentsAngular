@@ -6,12 +6,15 @@ import {
   ViewChild,
   ViewContainerRef,
   ComponentFactoryResolver,
-  AfterContentInit,
   HostListener,
+  ElementRef,
+  Renderer2,
+  OnChanges,
+  SimpleChanges,
 } from '@angular/core';
 import { EventEmitterService } from '../../services/toggle.service';
 import { Link } from '../../interfaces/LinkInterface';
-import { ThisReceiver } from '@angular/compiler';
+import { customTheme } from '../../assets/themes/custom';
 
 @Injectable()
 @Component({
@@ -19,7 +22,7 @@ import { ThisReceiver } from '@angular/compiler';
   templateUrl: './content.component.html',
   styleUrls: ['./content.component.scss'],
 })
-export class ContentComponent implements OnInit, AfterContentInit {
+export class ContentComponent implements OnInit, OnChanges {
   /** PROPERTIES-------------------------------------------------------------------------------------------------------- */
 
   @Input()
@@ -50,7 +53,7 @@ export class ContentComponent implements OnInit, AfterContentInit {
   router: boolean = true;
 
   @Input()
-  theme: string = 'default';
+  theme: string | any = 'light';
 
   @Input()
   topbar: any = null;
@@ -74,11 +77,19 @@ export class ContentComponent implements OnInit, AfterContentInit {
   @Input()
   usePermissions: boolean = false;
 
+  @Input()
+  useFav: boolean = false;
+
+  @ViewChild('advSidebarContent', { static: false })
+  advSidebarContent!: ElementRef;
+
   /** CONSTRUCTOR-------------------------------------------------------------------------------------------------------- */
 
   constructor(
     private eventEmitterService: EventEmitterService,
-    private componentFactoryResolver: ComponentFactoryResolver
+    private componentFactoryResolver: ComponentFactoryResolver,
+    private renderer: Renderer2,
+    private el: ElementRef
   ) {
     this.eventEmitterService.onNavigaionToggle.subscribe((data: any) => {
       this.sidebarToggle();
@@ -101,15 +112,10 @@ export class ContentComponent implements OnInit, AfterContentInit {
     this.headerCheck();
     this.checksize();
 
-    this.setFavoriteLinks();
-
     this.links_list = JSON.parse(JSON.stringify(this.links));
+    this.checkFavs();
 
-    this.links_list.forEach((el) => this.initFavorites(el));
-
-    this.links_list.unshift(this.favorite_links);
-
-    // this.CONSOLE()
+    if (typeof this.theme != 'string') this.setCustomTheme();
   }
 
   ngAfterContentInit(): void {
@@ -118,42 +124,18 @@ export class ContentComponent implements OnInit, AfterContentInit {
     this.checksize();
   }
 
-  /** Debug de todas props */
-  CONSOLE(){
-
-    console.log(
-      `---------------------------CONSOLE SIDEBAR---------------------------`
-    );
-
-    console.log("links:",this.links)
-    console.log("links_list:",this.links_list)
-    console.log("favorite_links:",this.favorite_links)
-    console.log("header:",this.header)
-    console.log("headerIsComponent:",this.headerIsComponent)
-    console.log("containerHeader:",this.containerHeader)
-    console.log("position:",this.position)
-    console.log("position_initial:",this.position_initial)
-    console.log("withHover:",this.withHover)
-    console.log("withHover_initial:",this.withHover_initial)
-    console.log("router:",this.router)
-    console.log("theme:",this.theme)
-    console.log("topbar:",this.topbar)
-    console.log("topbarIsComponent:",this.topbarIsComponent)
-    console.log("containerTopbar:",this.containerTopbar)
-    console.log("screenWidth:",this.screenWidth)
-    console.log("screenHeight:",this.screenHeight)
-    console.log("showToggle:",this.showToggle)
-    console.log("showToggle_initial:",this.showToggle_initial)
-    console.log("search:",this.search)
-    console.log("filter_link:",this.filter_link)
-    console.log("permissions:",this.permissions)
-    console.log("usePermissions:",this.usePermissions)
-
-     
-    console.log(
-      `---------------------------FIM CONSOLE SIDEBAR---------------------------`
-    );
-
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['useFav']) {
+      if (changes['useFav'].currentValue == true) {
+        this.checkFavs();
+      } else if (
+        changes['useFav'].currentValue == false &&
+        changes['useFav'].firstChange != true
+      ) {
+        delete this.links_list[0];
+        this.links_list = JSON.parse(JSON.stringify(this.links));
+      }
+    }
   }
 
   /** METHODS-------------------------------------------------------------------------------------------------------- */
@@ -358,6 +340,78 @@ export class ContentComponent implements OnInit, AfterContentInit {
     }
   }
 
+  /** Limpa o input de pesquisa de links */
+  clearInputSearchlinks() {
+    this.filter_link = '';
+    this.searchLinks();
+  }
+
+  /** Define o tema customizado */
+  setCustomTheme() {
+    var cuss: any = customTheme;
+    for (const [key, value] of Object.entries(this.theme)) {
+      const regex = new RegExp(`\\b${key}\\b`, 'g');
+      cuss = cuss.replace(regex, value);
+    }
+
+    const styleElement = this.renderer.createElement('style');
+    this.renderer.appendChild(styleElement, this.renderer.createText(cuss));
+    this.renderer.appendChild(document.head, styleElement);
+
+    const sidebarElement = this.el.nativeElement.querySelector('.sidebar');
+    if (sidebarElement) {
+      this.renderer.addClass(sidebarElement, 'custom');
+    }
+
+    this.theme = 'custom';
+  }
+
+  /** Adiciona os favoritos a lista de links */
+  checkFavs() {
+    if (this.useFav) {
+      this.setFavoriteLinks();
+
+      this.links_list.forEach((el) => this.initFavorites(el));
+
+      this.links_list.unshift(this.favorite_links);
+    }
+  }
+
+  /** Debug de todas props */
+  CONSOLE() {
+    console.log(
+      `---------------------------CONSOLE SIDEBAR---------------------------`
+    );
+
+    console.log('links:', this.links);
+    console.log('links_list:', this.links_list);
+    console.log('favorite_links:', this.favorite_links);
+    console.log('header:', this.header);
+    console.log('headerIsComponent:', this.headerIsComponent);
+    console.log('containerHeader:', this.containerHeader);
+    console.log('position:', this.position);
+    console.log('position_initial:', this.position_initial);
+    console.log('withHover:', this.withHover);
+    console.log('withHover_initial:', this.withHover_initial);
+    console.log('router:', this.router);
+    console.log('theme:', this.theme);
+    console.log('topbar:', this.topbar);
+    console.log('topbarIsComponent:', this.topbarIsComponent);
+    console.log('containerTopbar:', this.containerTopbar);
+    console.log('screenWidth:', this.screenWidth);
+    console.log('screenHeight:', this.screenHeight);
+    console.log('showToggle:', this.showToggle);
+    console.log('showToggle_initial:', this.showToggle_initial);
+    console.log('search:', this.search);
+    console.log('filter_link:', this.filter_link);
+    console.log('permissions:', this.permissions);
+    console.log('usePermissions:', this.usePermissions);
+
+    console.log(
+      `---------------------------FIM CONSOLE SIDEBAR---------------------------`
+    );
+  }
+
   /** Remove casos de favoritos dumplicados no path ???????????????????????*/
   // removeDuplicates(array: any, property: any) {
   //   return array.filter(
@@ -365,10 +419,4 @@ export class ContentComponent implements OnInit, AfterContentInit {
   //       index === self.findIndex((o: any) => o[property] === obj[property])
   //   );
   // }
-
-  /** Limpa o input de pesquisa de links */
-  clearInputSearchlinks() {
-    this.filter_link = '';
-    this.searchLinks();
-  }
 }

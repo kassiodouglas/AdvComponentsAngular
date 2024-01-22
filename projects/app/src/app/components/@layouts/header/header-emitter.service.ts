@@ -10,6 +10,7 @@ export class HeaderEmitterService {
   public onSearch: EventEmitter<any> = new EventEmitter();
   public onHover: EventEmitter<any> = new EventEmitter();
   public onPosition: EventEmitter<any> = new EventEmitter();
+  public onUseFav: EventEmitter<any> = new EventEmitter();
 
   constructor() { }
 

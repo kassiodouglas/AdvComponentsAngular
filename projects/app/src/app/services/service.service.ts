@@ -42,6 +42,13 @@ export class Service {
             icon: '<i class="fa-solid fa-table"></i>',
             tags: ['table', 'tableadv'],
           },
+
+          {
+            path: '/step',
+            label: 'Step',
+            icon: '<i class="fa-solid fa-table"></i>',
+            tags: ['step', 'stepperadv','stepper'],
+          },
         ],
       },
 

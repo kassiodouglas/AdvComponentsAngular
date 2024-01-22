@@ -12,6 +12,7 @@ export class HeaderComponent implements OnInit {
   search:boolean = false
   hover:boolean = false
   position:string = 'left'
+  useFav:boolean = false
 
   @Output() onTheme: EventEmitter<any> = new EventEmitter() 
   @Output() onSearch: EventEmitter<any> = new EventEmitter() 
@@ -26,6 +27,11 @@ export class HeaderComponent implements OnInit {
 
   themer(theme:string){
     this.emiterservice.onTheme.emit(theme)
+  }
+
+  faver(){
+    this.useFav = !this.useFav
+    this.emiterservice.onUseFav.emit(this.useFav)
   }
 
   searcher(){

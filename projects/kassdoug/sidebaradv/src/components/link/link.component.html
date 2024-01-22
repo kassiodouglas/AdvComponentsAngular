@@ -1,4 +1,4 @@
-<ul class="adv-links  {{theme}}">
+<ul #advLinks class="adv-links  {{theme}}">
 
   <li *ngIf="link.path && !usePermissions || usePermissions && link.path && checkPermission(link.permissions)" class="adv-btn-link-area">
     <button class="adv-btn-link" [routerLink]="link.path">
@@ -8,7 +8,7 @@
       </div>
     </button>
 
-    <i *ngIf="!link.favArea" class="pointer fa-star starfav" [ngClass]="{'active':link.isfav, 'fa-solid':link.isfav, 'fa-regular':!link.isfav}" [id]="'fav_'+link.label!.replace(' ','').toLowerCase()" (click)="setFav(link)"></i>
+    <i *ngIf="!link.favArea && useFav" class="pointer fa-star starfav" [ngClass]="{'active':link.isfav, 'fa-solid':link.isfav, 'fa-regular':!link.isfav}" [id]="linkId" (click)="setFav(link)"></i>
 
   </li>
 
@@ -37,7 +37,7 @@
       <ul class="adv-links-sub" [ngClass]="{'adv-hide-submenu': !arrowActive}">
 
         <li *ngFor="let sub of link.links">
-          <app-navigation-link [link]="sub" [theme]="theme" [permissions]="permissions" [usePermissions]="usePermissions"></app-navigation-link>
+          <app-navigation-link [useFav]="useFav" [link]="sub" [theme]="theme" [permissions]="permissions" [usePermissions]="usePermissions"></app-navigation-link>
         </li>
 
       </ul>

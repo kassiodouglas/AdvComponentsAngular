@@ -10,17 +10,26 @@
 
 
     <div class="btn-group">
-      <button type="button" class="h6 btn btn-sm btn-light" (click)="themer('light')"><i
-          class="small text-dark fa-solid fa-map"></i></button>
-      <button type="button" class="h6 btn btn-sm btn-dark" (click)="themer('dark')"><i
-          class="small text-light fa-solid fa-map"></i></button>
-      <button type="button" class="h6 btn btn-sm" style="background-color: slateblue;" (click)="themer('purple')"><i
-          class="small text-light fa-solid fa-map"></i></button>
-      <button type="button" class="h6 btn btn-sm btn-info" (click)="themer('blue')"><i
-          class="small text-light fa-solid fa-map"></i></button>
+
+      <button type="button" class="h6 btn btn-sm"  style="background-color: rgba(218, 218, 218, 1);" (click)="themer('light')"><i
+          class="small text-dark fa-solid fa-brush"></i></button>
+
+      <button type="button" class="h6 btn btn-sm" style="background-color: rgba(69, 69, 69, 1);" (click)="themer('dark')"><i
+          class="small text-light fa-solid fa-brush"></i></button>
+
+       <button type="button" class="h6 btn btn-sm" style="background-color: rgba(113,25,105,1);" (click)="themer('custom')"><i
+          class="small text-light fa-solid fa-brush"></i></button>
+
     </div>
 
-
+   
+    
+    <button type="button" class="h6 btn btn-sm btn-light rounded-circle mx-1" (click)="faver()"
+      title="Ligar/desligar favoritos">
+      <i *ngIf="!useFav" class="fa-regular fa-star" style="opacity: .2;"></i>
+      <i *ngIf="useFav" class="text-warning fa-solid fa-star"></i>
+    </button>
+ 
 
     <button type="button" class="h6 btn btn-sm btn-light rounded-circle mx-1" (click)="searcher()"
       title="Ligar/desligar buscar por menu">

@@ -197,5 +197,5 @@ Para telas menores que 720px, o componente altera sua configuração, abrangendo
 
 
 ## Temas
-Temos 4 temas configurados light (default), dark, purple e blue.
+Temos 2 temas configurados light (default), dark.
 

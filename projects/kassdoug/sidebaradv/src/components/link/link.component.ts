@@ -1,4 +1,13 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Input,
+  ElementRef,
+  EventEmitter,
+  Output,
+  ViewChildren,
+  QueryList,
+} from '@angular/core';
 import { Link } from '../../interfaces/LinkInterface';
 import { EventEmitterService } from '../../services/toggle.service';
 
@@ -8,17 +17,18 @@ import { EventEmitterService } from '../../services/toggle.service';
   styleUrls: ['./link.component.scss'],
 })
 export class LinkComponent implements OnInit {
+  /** PROPERTIES-------------------------------------------------------------------------------------------------------- */
+
   @Input()
   link!: Link;
 
   @Input()
-  theme: string = 'light';
+  theme: string | any = 'light';
 
   @Output()
   onSetfav: EventEmitter<any> = new EventEmitter();
 
   arrowActive: boolean = false;
-  // sidebarShow: boolean = true;
 
   @Input()
   permissions: Array<string> = [];
@@ -26,24 +36,40 @@ export class LinkComponent implements OnInit {
   @Input()
   usePermissions: boolean = true;
 
+  linkId: string = '';
+
+  @Input()
+  useFav: boolean = false;
+
+  @ViewChildren('advLinks') multAdvLinks!: QueryList<ElementRef>;
+
+  /** CONSTRUCTOR-------------------------------------------------------------------------------------------------------- */
+
   constructor(private eventEmitterService: EventEmitterService) {}
 
-  ngOnInit() {}
+  /** CYCLES-------------------------------------------------------------------------------------------------------- */
+
+  ngOnInit() {
+    if (this.link != undefined && this.link !== null && !this.link.divider)
+      this.linkId = this.link
+        .label!.replace(/[^\w\s]/gi, '')
+        .replace(/\s+/g, '')
+        .toLowerCase();
+  }
+
+  /** METHODS-------------------------------------------------------------------------------------------------------- */
 
   /** Altera o estado da seta indicativa*/
   arrow() {
     this.arrowActive = !this.arrowActive;
   }
 
-  /**  */
-  // show() {
-  //   this.sidebarShow = !this.sidebarShow;
-  // }
-
   /** Seta ou retira um link como favorito */
   setFav(link: any) {
-    var id = 'fav_' + link.label.replace(/[^\w\s]/gi, '').replace(/\s+/g, '').toLowerCase();
+    var id = this.linkId;
     var star = document.querySelector(`#${id}`);
+
+    if (star == null) return;
 
     var storage = localStorage.getItem('favoriteLinks');
     if (storage === null || storage === undefined) return;

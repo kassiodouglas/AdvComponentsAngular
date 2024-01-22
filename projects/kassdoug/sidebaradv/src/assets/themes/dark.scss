@@ -1,43 +1,50 @@
-$color_base: linear-gradient(0deg,  rgba(18, 18, 18, 1) 0%,  rgba(69, 69, 69, 1) 100%);
-$color_base_topbar:  rgba(69, 69, 69, 1);
+$color_base: linear-gradient(
+  0deg,
+  rgba(18, 18, 18, 1) 0%,
+  rgba(69, 69, 69, 1) 100%
+);
+$color_base_topbar: rgba(69, 69, 69, 1);
 $color_font: #fff;
 
 $color_base_link_icon: rgb(48, 48, 48);
 $color_base_link: transparent;
 
 $color_back_link: rgb(22, 22, 22);
-$border_link: rgba(124, 124, 124, 0.2);
-$color_border: linear-gradient(90deg, rgba(240,240,240,0) 0%, rgba(0,0,0,.3) 19%, rgba(0,0,0,.3) 87%, rgba(218,218,218,0) 100%);
+$color_border: linear-gradient(
+  90deg,
+  rgba(240, 240, 240, 0) 0%,
+  rgba(240, 240, 240,.3) 19%,
+  rgba(240, 240, 240,.3) 87%,
+  rgba(218, 218, 218, 0) 100%
+);
 
-.dark{
-
+.dark {
   // CONTENT/SIDEBAR
   &.adv-sidebar-content {
     .sidebar {
-      .btn-showhide {     
+      .btn-showhide {
         i {
-          color: $color_font;
+          color: $color_font !important;
         }
       }
 
       .content-links {
-        background: $color_base;
-        color: $color_font;
+        background: $color_base !important;
+        color: $color_font !important;
 
         .header {
-          color: $color_font;
-          border-image-source: $color_border;
+          color: $color_font !important;
         }
       }
     }
 
     .content {
       .topbar {
-        background: $color_base_topbar;
-        color: $color_font;
+        background: $color_base_topbar !important;
+        color: $color_font !important;
 
         .btn-showhide {
-          color: $color_font;
+          color: $color_font !important;
         }
       }
     }
@@ -45,49 +52,48 @@ $color_border: linear-gradient(90deg, rgba(240,240,240,0) 0%, rgba(0,0,0,.3) 19%
 
   // LINK
   &.adv-links {
-    color: $color_font;
+    color: $color_font !important;
 
     .label-area {
-
       .icon {
-        background: $color_base_link_icon;     
+        background: $color_base_link_icon !important;
       }
     }
 
     .adv-btn-expand {
-      color: $color_font;
-
+      color: $color_font !important;
+      background: $color_base_link !important;
       &.active,
       &:hover {
-        background-color: $color_back_link;
+        background-color: $color_back_link !important;
       }
     }
 
     .adv-btn-link {
-      background-color: $color_base_link;
-      color: $color_font;
+      background-color: $color_base_link !important;
+      color: $color_font !important;
 
       &.active,
       &:hover {
-        background-color: $color_back_link;
+        background-color: $color_back_link !important;
       }
     }
 
     .adv-links-sub {
       .adv-links {
-        .adv-btn-link {
-          border-left: $border_link;
+        .adv-btn-link {          
+          background: $color_base_link !important;
+          color: $color_font !important;
 
           &:hover {
-            background-color: $color_back_link;
+            background-color: $color_back_link !important;
           }
         }
       }
     }
 
     .divider {
-      border-image-source: $color_border;
+      border-image-source: $color_border !important;
     }
   }
-
 }
