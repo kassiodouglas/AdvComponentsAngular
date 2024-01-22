@@ -168,6 +168,39 @@
           }
         }
       }
+    },
+    "@kassdoug/stepperadv": {
+      "projectType": "library",
+      "root": "projects/kassdoug/stepperadv",
+      "sourceRoot": "projects/kassdoug/stepperadv/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/kassdoug/stepperadv/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/kassdoug/stepperadv/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/kassdoug/stepperadv/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "tsConfig": "projects/kassdoug/stepperadv/tsconfig.spec.json",
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ]
+          }
+        }
+      }
     }
   },
   "cli": {

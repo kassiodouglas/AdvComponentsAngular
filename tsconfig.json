@@ -8,7 +8,10 @@
       ],
       "@kassdoug/tableadv": [
         "dist/kassdoug/tableadv"
-      ]     
+      ]    ,
+      "@kassdoug/stepperadv": [
+        "dist/kassdoug/stepperadv"
+      ]   
     },
     "baseUrl": "./",
     "outDir": "./dist/out-tsc",
