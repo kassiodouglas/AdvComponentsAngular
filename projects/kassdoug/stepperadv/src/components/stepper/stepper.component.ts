@@ -47,7 +47,7 @@ export class StepperComponent implements OnInit, AfterViewInit, OnChanges {
   }
 
   ngAfterViewInit(): void {
-    this.changeStep(this.actualStep);
+    this.changerStep(this.actualStep);
   }
 
   ngOnChanges(changes: SimpleChanges): void {}
@@ -86,15 +86,15 @@ export class StepperComponent implements OnInit, AfterViewInit, OnChanges {
   }
 
   /** Altera a etapa */
-  changeStep(stepIndex: number = 0) {
+  changerStep(stepIndex: number = 0) {
     setTimeout(() => {
-      let step = this.steps[stepIndex];    
+      let step = this.steps[stepIndex];
 
       if (step === undefined) return;
       if (step.completed == 'true' || step.completed == 'progress') {
         this.actualStep = stepIndex;
 
-        this.changeAnimationState('hide')      
+        this.changeAnimationState('hide');
 
         this.sePrevNextSteps();
 
@@ -112,7 +112,7 @@ export class StepperComponent implements OnInit, AfterViewInit, OnChanges {
             this.viewContainerRef.createComponent(componentFactory);
 
           // Afirmação de tipo para informar ao TypeScript sobre o tipo esperado
-          const childComponent = componentRef.instance as {onCompleteStep: EventEmitter<any>};
+          const childComponent = componentRef.instance as {onCompleteStep: EventEmitter<any>;};
 
           // Captura o evento onCompleteStep do componente filho
           if (childComponent.onCompleteStep) {
@@ -120,12 +120,10 @@ export class StepperComponent implements OnInit, AfterViewInit, OnChanges {
               this.completedStep(e);
             });
           }
-         
         }, 600);
       }
     });
   }
-
 
   /** */
   completedStep(event: any) {
@@ -134,6 +132,6 @@ export class StepperComponent implements OnInit, AfterViewInit, OnChanges {
     step.content = event;
     this.onCompleteStep.emit(step);
 
-    this.changeStep(this.actualStep + 1);
+    this.changerStep(this.actualStep + 1);
   }
 }
