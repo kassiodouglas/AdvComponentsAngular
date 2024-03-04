@@ -13,6 +13,7 @@ export class Step_2Component implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    
   }
 
   completeStep(){
