@@ -9,7 +9,7 @@
 
     <div class="gd-form-group">
 
-      <input class='gd-input-search' placeholder="Pesquisar algum conteudo nas colunas..." [(ngModel)]="whereValue" (keyup.enter)="onSearch()">
+      <input class='gd-input-search' placeholder="Pesquisar Geral..." [(ngModel)]="whereValue" (keyup.enter)="onSearch()">
       <button class='gd-btn' (click)="onSearch()" gd-tooltip="Faz a pesquisa solicitada">
         <i class="fa-solid fa-magnifying-glass" ></i>
       </button>
@@ -50,7 +50,7 @@
   <div class="gd-body" appScrollListener (fixedHeader)="fixeHeader($event)">
 
     <div *ngIf="data == null" class="not-reg">{{message}}</div>
-    <button *ngIf="data == null" class="p-2 btn btn-sm btn-outline-dark" (click)="onCleanSearch()">Recarregar <i class="fa-solid fa-broom"></i></button> 
+    <button *ngIf="data == null" class="p-2 btn btn-sm btn-outline-dark" (click)="onCleanSearch()">Recarregar <i class="fa-solid fa-broom"></i></button>
 
     <table  *ngIf="data != null">
       <tr class="gd-header-row" [ngClass]="{'fixed': isFixed}">

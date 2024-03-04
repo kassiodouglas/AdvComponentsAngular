@@ -27,7 +27,7 @@ export class TableComponent implements OnInit, OnChanges, AfterViewInit {
   @Input() id!: string;
 
   driver: string = 'laravel-eloquent'; // chave simbolica para determinar o uso do componente com backend em laravel com eloquent
-  version: string = '1.2.2';
+  version: string = '1.2.3';
   message: string = '';
 
   /** Define o estado da tabela maximizado ou normal */
@@ -92,7 +92,7 @@ export class TableComponent implements OnInit, OnChanges, AfterViewInit {
     this.data = changes['data'].currentValue;
     if (this.data !== null && this.data !== undefined) this.config();
 
-    
+
     // this.CONSOLE();
   }
 
